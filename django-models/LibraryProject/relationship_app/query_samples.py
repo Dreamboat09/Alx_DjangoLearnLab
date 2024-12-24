@@ -13,6 +13,8 @@ try:
     
     def book_by_author(author_name):
         try:
+            Author.objects.get(name=author_name)
+            objects.filter(author=author)
             authors = Author.objects.get(author_name)
             books = Book.objects.filter(Author=authors)
             return books

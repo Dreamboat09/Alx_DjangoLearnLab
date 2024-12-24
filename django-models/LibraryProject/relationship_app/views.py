@@ -5,12 +5,12 @@ from .models import Book
 
 
 def listbook(request):
-    Book.object.all()
+    Book.objects.all()
     context = {
         'title' : 'book',
         'content': 'this is the list of books'
         }
-    return render (request, "relationship_app/list_books.html", Book.object.all())
+    return render (request, "relationship_app/list_books.html", context)
 
  
 

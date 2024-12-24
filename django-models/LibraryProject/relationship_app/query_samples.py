@@ -14,7 +14,7 @@ try:
     def book_by_author(author_name):
         try:
             Author.objects.get(name=author_name)
-            objects.filter(author=author)
+            Book.objects.filter(author=author)
             authors = Author.objects.get(author_name)
             books = Book.objects.filter(Author=authors)
             return books
@@ -24,7 +24,7 @@ try:
     
     def book_in_a_library(library_name):
         try:
-            Library.objects.get(name=)
+            Library.objects.get(name=library_name)
             books.all()
             Librarys = Library.objects.get(library_name)
             books = Book.objects.filter(Library=Librarys)

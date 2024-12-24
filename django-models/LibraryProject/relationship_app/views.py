@@ -10,7 +10,7 @@ def listbook(request):
         'title' : 'book',
         'content': 'this is the list of books'
         }
-    return render (request, "book/list_books.html", context)
+    return render (request, "relationship_app/list_books.html", Book.object.all())
 
  
 

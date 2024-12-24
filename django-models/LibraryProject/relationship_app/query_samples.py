@@ -3,13 +3,13 @@ from .models import Book, Author, Library, Librarian
 
 try:
     mydb = mysql.connector.connect(
-        host = 'localhost'
-        user = 'root'
-        passwd = 'dreamboat'
+        host = 'localhost',
+        user = 'root',
+        passwd = 'dreamboat',
         database = 'bookDB'
         )
     
-    mycursor = mydb.cursor
+    mycursor = mydb.cursor()
     
     def book_by_author(author_name):
         try:
@@ -47,9 +47,9 @@ except:
     print('error')
     
 finally:
-    if mydb = mysql.connector.connect
+    if mydb == mysql.connector.connect:
         mycursor.close()
-        mydb.close
+        mydb.close()
     
     else:
         print('error')

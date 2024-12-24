@@ -19,8 +19,11 @@ try:
         except books.DoesNotExist:
             return[]
             
+    
     def book_in_a_library(library_name):
         try:
+            Library.objects.get(name=library_name)
+            books.all()
             Librarys = Library.objects.get(library_name)
             books = Book.objects.filter(Library=Librarys)
             return books

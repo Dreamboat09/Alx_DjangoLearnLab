@@ -18,5 +18,6 @@ from django.views.generic import ListView
 
 class listbookinlibrary(ListView):
     model = Book
+    Book.objects.get(Library=ListView)
     template_name = "relationship_app/library_detail.html"
     context_object_name = "books"

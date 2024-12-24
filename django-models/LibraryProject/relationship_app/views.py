@@ -5,7 +5,7 @@ from .models import Book
 
 
 def listbook(request):
-    book = Book.object.all
+    Book.object.all()
     context = {
         'title' : 'book',
         'content': 'this is the list of books'

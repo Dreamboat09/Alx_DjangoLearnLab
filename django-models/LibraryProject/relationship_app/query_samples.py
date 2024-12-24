@@ -24,7 +24,7 @@ try:
     
     def book_in_a_library(library_name):
         try:
-            Library.objects.get(name=library_name)
+            Library.objects.get(name=)
             books.all()
             Librarys = Library.objects.get(library_name)
             books = Book.objects.filter(Library=Librarys)
@@ -34,6 +34,7 @@ try:
         
     def libarian_by_library(library_name):
         try:
+            Librarian.objects.get(library=library_name)
             Librarys = Library.objects.get(library_name)
             Librarians = Librarian.objects.filter(Library=Librarys)
             return Librarians

@@ -1,7 +1,7 @@
 from django.urls import path
-import views
+from .views import LibraryDetailView, list_books
 
 urlspatterns = [
-    path('book/', views.listbook, name='book'),
-    path('library/', views.as_views(), name='library')
+    path('book/', list_books, name='book'),
+    path('library/', LibraryDetailView.as_views(), name='library')
 ]

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import LibraryDetailView, list_books
+from .views import list_books, LibraryDetailView
 
 urlspatterns = [
     path('book/', list_books, name='book'),

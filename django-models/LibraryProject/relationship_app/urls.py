@@ -3,8 +3,8 @@ from .views import list_books, LibraryDetailView, userlogin, userlogout, registe
 from . import views
 urlpatterns = [
     path('accounts/', include([
-        path('login/', userlogin.as_view(), name='login'),
-        path('logout/', userlogout.as_view(), name='logout'),
+        path('login/', userlogin.as_view(template_name='registration/login.html'), name='login'),
+        path('logout/', userlogout.as_view(template_name='registration/logout.html'), name='logout'),
         path('register/', views.register, name='register'),
         ])),
     path('book/', list_books, name='book'),

@@ -4,7 +4,7 @@ from django.shortcuts import render
 from .models import Book 
 
 
-def listbook(request):
+def list_books(request):
     Book.objects.all()
     context = {
         'title' : 'book',
@@ -18,7 +18,7 @@ from django.views.generic.detail import DetailView
 from .models import Library, Book
 
 
-class listbookinlibrary(DetailView):
+class LibraryDetailView(DetailView):
     model = Library
     template_name = "relationship_app/library_detail.html"
     context_object_name = "library"
@@ -30,3 +30,32 @@ class listbookinlibrary(DetailView):
         context ['book'] = Book.objects.filter(Library=lib)
         
         return context
+    
+    
+    
+#registrations views
+    
+from django.contrib.auth.views import LoginView, LogoutView
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+    
+class userlogin(LoginView):
+    template_name = "registration/login.html"
+           
+class userlogout(LogoutView):
+    template_name = "registration/logout.html"
+    
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+        
+            return redirect('books')
+        
+    else:
+        form = UserCreationForm
+        
+    return render(request, 'registration/register.html', {'form' : form } )

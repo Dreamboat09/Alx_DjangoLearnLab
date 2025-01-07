@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookshelf',
     'relationship_app',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -129,7 +130,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # things i added myself
-STATICFILES_DIRS = [BASE_DIR / 'static']
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "book"
 LOGOUT_REDIRECT_URL = "book"

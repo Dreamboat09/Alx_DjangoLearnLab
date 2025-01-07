@@ -56,6 +56,6 @@ def register(request):
             return redirect('books')
         
     else:
-        form = UserCreationForm
+        form = UserCreationForm()
         
     return render(request, 'registration/register.html', {'form' : form } )

@@ -2,8 +2,8 @@ from .models import Author, Book, Library, Librarian
 
 def get_books_by_author(author_name):
     """Retrieve all books written by a specific author."""
-    books = Book.objects.get(author=author_name)
-    return books.all()
+    books = Book.objects.filter(author__name=author_name)
+    return books
 
 
 def get_books_in_library(library_name):
@@ -13,5 +13,5 @@ def get_books_in_library(library_name):
 
 def get_librarian_of_library(library_name):
     """Retrieve the librarian of a specific library."""
-    librarians = Librarian.objects.get(library=library_name)
-    return librarians.all()
+    librarians = Librarian.objects.get(library__name=library_name)
+    return librarians

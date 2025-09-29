@@ -12,5 +12,5 @@ def book_list(request):
 from django.views.generic import DetailView
 
 class LibraryView(DetailView):
-    model = Book
+    model = Library
     template_name = 'relationship_app/library_detail.html'

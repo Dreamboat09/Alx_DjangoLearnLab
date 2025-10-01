@@ -8,6 +8,24 @@ def list_books(request):
     return render(request, 'relationship_app/list_books.html', context)
 
 
+from django.contrib.auth.decorators import permission_required
+
+@permission_required('relationship_app.can_add_book', raise_exception=True)
+def add_book(request):
+    # Logic to add a book
+    return render(request, 'relationship_app/add_book.html')
+
+@permission_required('relationship_app.can_change_book', raise_exception=True)
+def change_book(request, book_id):
+    # Logic to change a book
+    return render(request, 'relationship_app/change_book.html') 
+
+@permission_required('relationship_app.can_delete_book', raise_exception=True)
+def delete_book(request, book_id):
+    # Logic to delete a book
+    return render(request, 'relationship_app/delete_book.html')
+
+
 
 from django.views.generic.detail import DetailView
 from .models import Library

@@ -10,9 +10,9 @@ from .models import Book, CustomUser
 #admin.site.register(Book, BookAdmin)
 
 
-class customModelAdmin(admin.ModelAdmin):
+class CustomUserAdmin(admin.ModelAdmin):
     list_display = ('email', 'password', 'date_of_birth', 'profile_photo')
     search_fields = ('email', 'first_name', 'last_name')
     list_filter = ('date_joined', 'last_login')
 
-admin.site.register(CustomUser, customModelAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)

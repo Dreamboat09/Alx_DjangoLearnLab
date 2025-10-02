@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Librarian Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Librarian Dashboard</h1>
+    <p class="lead">Welcome, {{ user.username }}! Manage library operations.</p>
+    
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Manage Books</h5>
+                    <p class="card-text">Add new books, update book details, and manage inventory.</p>
+                    <a href="#" class="btn btn-success">Manage Books</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Issue/Return Books</h5>
+                    <p class="card-text">Process book checkouts and returns for members.</p>
+                    <a href="#" class="btn btn-success">Process Transactions</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-4">
+        <h3>Books Due Soon</h3>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Member</th>
+                    <th>Due Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Python Crash Course</td>
+                    <td>jane_smith</td>
+                    <td>2024-10-05</td>
+                    <td><button class="btn btn-sm btn-warning">Send Reminder</button></td>
+                </tr>
+                <!-- More rows here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

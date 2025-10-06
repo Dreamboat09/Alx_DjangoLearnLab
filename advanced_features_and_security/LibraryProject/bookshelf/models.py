@@ -10,10 +10,14 @@ class Book(models.Model):
   
     def __str__(self):
         return self.title
-
-class CustomUser(AbstractUser):
-    date_of_birth = models.DateField(null=True, blank=True)
-    profile_photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
+    
+    class Meta:
+        permissions = [
+            ("can_view", "Can view book details"),
+            ("can_edit", "Can edit book details"),
+            ("can_delete", "Can delete book"),
+            ("can_create", "Can create new book"),
+        ]
 
 
 class CustomUserManager(BaseUserManager):
@@ -36,3 +40,14 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('Superuser must have is_superuser=True.')
 
         return self.create_user(username, email, password, **extra_fields)
+    
+
+
+class CustomUser(AbstractUser):
+    date_of_birth = models.DateField(null=True, blank=True)
+    profile_photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
+
+    objects = CustomUserManager()
+
+    def __str__(self):
+        return self.username

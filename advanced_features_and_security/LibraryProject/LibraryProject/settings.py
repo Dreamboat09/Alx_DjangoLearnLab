@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-u!&k1dafps)fhp^rnt!0pk41(@0=4m#1!*3y8d@b#5ow@b71si'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -132,3 +132,14 @@ LOGOUT_REDIRECT_URL = 'book_list'
 import os
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# HTTPS and Cookie Security
+# These settings ensure cookies are only sent over HTTPS
+CSRF_COOKIE_SECURE = True  # CSRF cookie only sent over HTTPS
+SESSION_COOKIE_SECURE = True  # Session cookie only sent over HTTPS
+
+# Browser Security Headers
+SECURE_BROWSER_XSS_FILTER = True  # Enable browser's XSS filtering
+X_FRAME_OPTIONS = 'DENY'  # Prevent site from being framed (clickjacking protection)
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent browser from MIME-sniffing
+

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Book
 from django.contrib.auth.decorators import permission_required
 
@@ -21,6 +21,7 @@ def add_book(request):
         )
         books.save()
         return redirect ('book_list')
+    return render(request, 'bookshelf/add_book.html')
 
 @permission_required('bookshelf.can_edit', raise_exception=True)
 def edit_book(request, book_id):
@@ -30,7 +31,8 @@ def edit_book(request, book_id):
         book.author = request.POST['author']
         book.published_date = request.POST['published_date']
         book.save()
-    return redirect('book_list')
+        return redirect('book_list')
+    return render(request, 'bookshelf/edit_book.html', {'book': book})
 
 @permission_required('bookshelf.can_delete', raise_exception=True)
 def delete_book(request, book_id):

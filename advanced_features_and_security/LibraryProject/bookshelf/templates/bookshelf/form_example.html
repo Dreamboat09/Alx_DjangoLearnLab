@@ -1,0 +1,14 @@
+<form method="POST">
+    {% csrf_token %}
+    
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title" required>
+    
+    <label for="author">Author:</label>
+    <input type="text" name="author" id="author" required>
+    
+    <label for="published_date">published_date:</label>
+    <textarea name="published_date" id="published_date"></textarea>
+    
+    <button type="submit">Submit</button>
+</form>

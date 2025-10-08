@@ -138,13 +138,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # These settings ensure cookies are only sent over HTTPS
 CSRF_COOKIE_SECURE = True  # CSRF cookie only sent over HTTPS
 SESSION_COOKIE_SECURE = True  # Session cookie only sent over HTTPS
+SECURE_SSL_REDIRECT = True  # Redirect all non-HTTPS requests to HTTPS
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Browser Security Headers
 SECURE_BROWSER_XSS_FILTER = True  # Enable browser's XSS filtering
 X_FRAME_OPTIONS = 'DENY'  # Prevent site from being framed (clickjacking protection)
 SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent browser from MIME-sniffing
-
-SECURE_SSL_REDIRECT = True  # Redirect all non-HTTPS requests to HTTPS
 
 # HSTS settings
 SECURE_HSTS_SECONDS = 31536000  # Enforce HTTPS for one year

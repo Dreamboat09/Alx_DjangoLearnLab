@@ -3,7 +3,7 @@ from django.shortcuts import render
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
 from .models import Book, Author
 from .serializers import BookSerializer, AuthorSerializer
-from rest_framework.permissions import isAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAdminUser, IsAuthenticatedOrReadOnly, IsAuthenticated
 
 # Create your views here.
 
@@ -20,7 +20,7 @@ class BookDetailView(RetrieveAPIView):
 class BookCreateView(CreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [isAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
         serializer.save(added_by=self.request.user)
@@ -28,7 +28,7 @@ class BookCreateView(CreateAPIView):
 
 class BookUpdateView(UpdateAPIView):
     serializer_class = BookSerializer
-    permission_classes =  [isAuthenticatedOrReadOnly]
+    permission_classes =  [IsAuthenticatedOrReadOnly]
     lookup_field = 'id'
     lookup_url_kwarg = 'book_id'
 
@@ -40,6 +40,6 @@ class BookUpdateView(UpdateAPIView):
 class BookDeleteView(DestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [isAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticated]
     lookup_field = 'id'
     lookup_url_kwarg = 'book_id'

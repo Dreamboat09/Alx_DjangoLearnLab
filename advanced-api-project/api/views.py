@@ -12,7 +12,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 class BookListView(ListAPIView):
     serializer_class = BookSerializer
-    filter_backends = [DjangoFilterBackend]
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_fields = ['title', 'author', 'publication_year']
     search_fields = ['title', 'author',]
     ordering_fields = ['publication_year', 'title']

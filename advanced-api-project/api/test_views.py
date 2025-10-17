@@ -9,6 +9,7 @@ class BookListViewTests(APITestCase):
     def setUp(self):
         self.client = APIClient()
         self.user = User.objects.create_user(username='testuser', password='testpass', email='user@test.com')
+        self.client.login(username='testuser', password='testpass')
         self.client.force_authenticate(user=self.user)
 
         #create sample authors

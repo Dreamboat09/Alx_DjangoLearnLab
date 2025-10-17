@@ -9,6 +9,7 @@ from django_filters import rest_framework
 from rest_framework import generics
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
+from django.contrib.auth.models import User
 #from rest_framework.filters import SearchFilter, OrderingFilter
 
 # Create your views here.
@@ -30,7 +31,7 @@ class BookDetailView(RetrieveAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     lookup_field = 'id'
-    lookup_url_kwarg = 'book_id'
+    lookup_url_kwarg = 'id'
 
 class BookCreateView(CreateAPIView):
     queryset = Book.objects.all()
@@ -45,11 +46,11 @@ class BookUpdateView(UpdateAPIView):
     serializer_class = BookSerializer
     permission_classes =  [IsAuthenticatedOrReadOnly]
     lookup_field = 'id'
-    lookup_url_kwarg = 'book_id'
+    lookup_url_kwarg = 'id'
 
     def get_queryset(self):
       if self.request.user is not None:
-          return Book.objects.filter(added_by=self.request.user)
+          return Book.objects.filter(User=self.request.user)
       return Book.objects.none()
 
 class BookDeleteView(DestroyAPIView):
@@ -57,4 +58,4 @@ class BookDeleteView(DestroyAPIView):
     serializer_class = BookSerializer
     permission_classes = [IsAuthenticated]
     lookup_field = 'id'
-    lookup_url_kwarg = 'book_id'
+    lookup_url_kwarg = 'id'
